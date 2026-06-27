@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Mail, MapPin, HeartPulse } from "lucide-react";
 import { navLinks, ngoName } from "@/data/siteData";
 
@@ -8,9 +9,13 @@ export default function Footer() {
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-3">
         <div>
           <div className="mb-4 flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-full bg-red-700">
-              <HeartPulse />
-            </div>
+            <Image
+              src="/logo.png"
+              width={70}
+              height={70}
+              alt="Awareness program by Sickle Cell & Thalassemia Society"
+            />
+
             <h3 className="font-bold">{ngoName}</h3>
           </div>
           <p className="max-w-md text-sm leading-7 text-slate-300">

@@ -10,11 +10,11 @@ export default function CTA() {
               Join Our Mission
             </p>
             <h2 className="text-3xl font-black md:text-5xl">
-              Help us create awareness, support families, and save lives.
+              Help us create awareness, support families, & save lives.
             </h2>
             <p className="mt-5 max-w-2xl text-red-50">
-              Your time, support, and contribution can help us organize health
-              camps, counseling sessions, screening drives, and education
+              Your time, support, & contribution can help us organize health
+              camps, counseling sessions, screening drives, & education
               programs.
             </p>
           </div>

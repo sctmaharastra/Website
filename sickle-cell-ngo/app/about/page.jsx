@@ -16,7 +16,7 @@ export default function AboutPage() {
     <>
       <PageHeader
         title="About Us"
-        description="A community-driven organization working for awareness, early diagnosis, counseling, dignity, and better healthcare access for families affected by Sickle Cell Disease and Thalassemia."
+        description="A community-driven organization working for awareness, early diagnosis, counseling, dignity, & better healthcare access for families affected by Sickle Cell Disease & Thalassemia."
       />
 
       <section className="relative overflow-hidden px-5 py-24">
@@ -27,16 +27,16 @@ export default function AboutPage() {
           <div>
             <SectionTitle
               eyebrow="Our Story"
-              title="Built with a vision to serve families and communities."
-              description="The Sickle Cell & Thalassemia Society was established with a vision to create awareness about inherited blood disorders and support affected individuals and families."
+              title="Built with a vision to serve families & communities."
+              description="The Sickle Cell & Thalassemia Society was established with a vision to create awareness about inherited blood disorders & support affected individuals & families."
             />
 
             <p className="text-lg leading-9 text-slate-600">
               We work closely with communities, healthcare professionals,
-              educational institutions, and government agencies to promote
-              prevention, early detection, and better quality of life. Through
-              awareness drives, screening camps, counseling, health talks, and
-              patient support, we aim to create a healthier and more informed
+              educational institutions, & government agencies to promote
+              prevention, early detection, & better quality of life. Through
+              awareness drives, screening camps, counseling, health talks, &
+              patient support, we aim to create a healthier & more informed
               society.
             </p>
 
@@ -55,7 +55,7 @@ export default function AboutPage() {
             <div className="relative overflow-hidden rounded-[2.5rem] bg-white p-1 shadow-2xl shadow-red-900/10">
               <Image
                 src="/hero2.png"
-                alt="Awareness program by Sickle Cell and Thalassemia Society"
+                alt="Awareness program by Sickle Cell & Thalassemia Society"
                 width={600}
                 height={560}
                 className="h-[430px] w-full rounded-[2rem] object-cover"
@@ -102,17 +102,17 @@ export default function AboutPage() {
 
             <p className="mt-6 text-lg leading-9 text-slate-600">
               Late Padmashri Sampat Ramteke Sir was a visionary social reformer
-              and tireless advocate for individuals affected by Sickle Cell
-              Disease and Thalassemia. His lifelong dedication transformed
-              countless lives by bringing awareness, dignity, and hope to
-              patients and their families.
+              & tireless advocate for individuals affected by Sickle Cell
+              Disease & Thalassemia. His lifelong dedication transformed
+              countless lives by bringing awareness, dignity, & hope to patients
+              & their families.
             </p>
 
             <p className="mt-5 text-lg leading-9 text-slate-600">
-              Through his relentless efforts, advocacy, and commitment to social
-              justice, Sickle Cell patients gained recognition and important
+              Through his relentless efforts, advocacy, & commitment to social
+              justice, Sickle Cell patients gained recognition & important
               protections under the Rights of Persons with Disabilities Act,
-              along with several other rights and welfare measures that improved
+              along with several other rights & welfare measures that improved
               their quality of life.
             </p>
 
@@ -120,8 +120,8 @@ export default function AboutPage() {
               <Quote className="mb-4 text-red-700" size={34} />
               <p className="text-xl font-bold leading-9 text-slate-900">
                 His mission was not merely to fight a disease, but to restore
-                hope, dignity, and equal opportunities for every life affected
-                by Sickle Cell Disease and Thalassemia.
+                hope, dignity, & equal opportunities for every life affected by
+                Sickle Cell Disease & Thalassemia.
               </p>
             </div>
           </div>
@@ -142,7 +142,7 @@ export default function AboutPage() {
 
             <p className="text-lg leading-8 text-red-50">
               A society where every individual has access to awareness,
-              screening, treatment support, and a life free from discrimination
+              screening, treatment support, & a life free from discrimination
               due to genetic blood disorders.
             </p>
           </div>
@@ -156,10 +156,10 @@ export default function AboutPage() {
 
             <ul className="space-y-4">
               {[
-                "Create awareness about Sickle Cell Disease and Thalassemia.",
-                "Promote screening and early diagnosis.",
-                "Provide counseling and support to affected families.",
-                "Organize health camps and educational programs.",
+                "Create awareness about Sickle Cell Disease & Thalassemia.",
+                "Promote screening & early diagnosis.",
+                "Provide counseling & support to affected families.",
+                "Organize health camps & educational programs.",
                 "Advocate for better healthcare access.",
               ].map((item) => (
                 <li key={item} className="flex gap-3 text-slate-700">

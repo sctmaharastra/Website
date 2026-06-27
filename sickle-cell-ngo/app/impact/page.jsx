@@ -8,7 +8,7 @@ export default function ImpactPage() {
     <>
       <PageHeader
         title="Our Impact"
-        description="Through awareness, screening, counseling, and short film production, we continue to reach families and communities."
+        description="Through awareness, screening, counseling, & short film production, we continue to reach families & communities."
       />
 
       <section className="px-5 py-20">

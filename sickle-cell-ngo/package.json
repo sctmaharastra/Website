@@ -2,12 +2,12 @@
   "name": "sickle-cell-ngo",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "dev": "nodemon next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
-  },
+ "scripts": {
+  "dev": "next dev",
+  "build": "next build",
+  "start": "next start",
+  "lint": "next lint"
+},
   "dependencies": {
     "lucide-react": "^1.21.0",
     "next": "16.2.9",

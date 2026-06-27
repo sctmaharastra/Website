@@ -7,7 +7,7 @@ export default function DonatePage() {
     <>
       <PageHeader
         title="Donate Now"
-        description="Your contribution supports awareness camps, screening programs, counseling sessions, education, and family support."
+        description="Your contribution supports awareness camps, screening programs, counseling sessions, education, & family support."
       />
 
       <section className="px-5 py-20">
@@ -21,17 +21,17 @@ export default function DonatePage() {
               <DonationPoint
                 icon={<Heart />}
                 title="Support Families"
-                text="Help affected families receive guidance, counseling, and emotional support."
+                text="Help affected families receive guidance, counseling, & emotional support."
               />
               <DonationPoint
                 icon={<ShieldCheck />}
                 title="Promote Prevention"
-                text="Support screening and awareness programs that help prevent inherited blood disorders."
+                text="Support screening & awareness programs that help prevent inherited blood disorders."
               />
               <DonationPoint
                 icon={<Users />}
                 title="Reach Communities"
-                text="Enable camps, school programs, health talks, and community outreach activities."
+                text="Enable camps, school programs, health talks, & community outreach activities."
               />
             </div>
           </div>
@@ -45,7 +45,7 @@ export default function DonatePage() {
 
             <div className="rounded-2xl bg-white/10 p-5">
               <p className="text-sm text-red-100">UPI ID</p>
-              <p className="mt-1 text-xl font-black">your-upi-id@bank</p>
+              <p className="mt-1 text-xl font-black">@bank</p>
             </div>
 
             <div className="mt-5 rounded-2xl bg-white p-6 text-center text-slate-950">

@@ -7,7 +7,7 @@ export default function ProgramsPage() {
     <>
       <PageHeader
         title="Our Programs"
-        description="We organize awareness, screening, counseling, health talks, and patient support programs for communities and families."
+        description="We organize awareness, screening, counseling, health talks, & patient support programs for communities & families."
       />
 
       <section className="px-5 py-20">

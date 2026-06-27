@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { HeartPulse } from "lucide-react";
 import { navLinks } from "@/data/siteData";
 import Button from "./Button";
@@ -8,11 +9,14 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 border-b border-red-100 bg-white/90 backdrop-blur-xl">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
         <Link href="/" className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-full bg-red-700 text-white">
-            <HeartPulse size={24} />
-          </div>
-          <div>
-            <p className="text-sm font-black leading-tight text-red-800">
+          <Image
+            src="/logo.png"
+            width={70}
+            height={70}
+            alt="Awareness program by Sickle Cell & Thalassemia Society"
+          />
+          <div className="hidden mb:block">
+            <p className="text-lg font-black leading-tight text-red-800">
               Sickle Cell & Thalassemia
             </p>
             <p className="text-xs font-medium text-slate-500">

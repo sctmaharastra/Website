@@ -1,36 +1,48 @@
 import PageHeader from "@/components/PageHeader";
+import DiseaseHoverCard from "@/components/DiseaseHoverCard";
 
 export default function DiseasesPage() {
   return (
     <>
       <PageHeader
         title="Sickle Cell Disease & Thalassemia"
-        description="Understanding genetic blood disorders is the first step toward prevention, early diagnosis, and better care."
+        description="Underst&ing genetic blood disorders is the first step toward prevention, early diagnosis, & better care."
       />
 
       <section className="px-5 py-20">
         <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-2">
-          <DiseaseBox
-            title="What is Sickle Cell Disease?"
-            text="Sickle Cell Disease is a genetic blood disorder in which red blood cells become sickle-shaped, causing pain, anemia, and other health complications. Early diagnosis and proper management can significantly improve quality of life."
-            facts={[
-              "Inherited genetic disorder",
-              "Affects red blood cells",
-              "Can cause severe pain episodes",
-              "Requires regular medical care",
+          <DiseaseHoverCard
+            variant="full"
+            title="Sickle Cell Disease"
+            tag="Genetic Blood Disorder"
+            description="Sickle Cell Disease is an inherited blood disorder that causes red blood cells to become sickle-shaped instead of round. These abnormal cells can block blood flow, leading to pain, anemia, infections, & other serious health complications."
+            hoverDescription="Early diagnosis, regular medical care, & genetic counseling can greatly improve quality of life while helping families underst& the condition & reduce the risk of passing it on to future generations."
+            points={[
+              "Inherited genetic blood disorder",
+              "Changes the shape of red blood cells",
+              "May cause severe pain & anemia",
+              "Can damage organs & increase infections",
+              "Requires regular medical monitoring",
+              "Awareness & carrier screening help in prevention",
             ]}
+            color="red"
           />
 
-          <DiseaseBox
-            title="What is Thalassemia?"
-            text="Thalassemia is an inherited blood disorder that affects the body’s ability to produce healthy hemoglobin. Patients may require regular blood transfusions and ongoing medical care."
-            facts={[
-              "Genetic blood disorder",
-              "Affects hemoglobin production",
-              "Can be detected through screening",
-              "Prevention through awareness and testing",
+          <DiseaseHoverCard
+            variant="full"
+            title="Thalassemia"
+            tag="Inherited Hemoglobin Disorder"
+            description="Thalassemia is an inherited blood disorder that affects the body's ability to produce healthy hemoglobin. Patients may require lifelong medical care, regular monitoring, & blood transfusions depending on the severity."
+            hoverDescription="Early screening, genetic counseling, & timely medical intervention can significantly improve quality of life while helping families make informed healthcare & family planning decisions."
+            points={[
+              "Inherited genetic blood disorder",
+              "Reduces healthy hemoglobin production",
+              "May require regular blood transfusions",
+              "Can cause anemia, fatigue, & weakness",
+              "Detected through carrier screening & blood tests",
+              "Preventable through awareness & counseling",
             ]}
-            dark
+            color="slate"
           />
         </div>
       </section>

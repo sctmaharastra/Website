@@ -7,7 +7,7 @@ export default function ContactPage() {
     <>
       <PageHeader
         title="Contact Us"
-        description="Reach out to volunteer, donate, partner, or learn more about our awareness and screening programs."
+        description="Reach out to volunteer, donate, partner, or learn more about our awareness & screening programs."
       />
 
       <section className="px-5 py-20">
