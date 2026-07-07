@@ -71,7 +71,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="absolute bottom-3 left-3 rounded-2xl bg-white p-3 shadow-xl sm:-bottom-7 sm:-left-20 sm:rounded-3xl sm:p-5">
+            <div className="absolute bottom-3 left-3 rounded-2xl bg-white p-3 shadow-xl sm:-bottom-7 sm:-left-6 sm:rounded-3xl sm:p-5">
               <div className="flex items-center gap-2 sm:gap-3">
                 <div className="rounded-xl bg-red-100 p-2 text-red-700 sm:rounded-2xl sm:p-3">
                   <HeartPulse className="h-5 w-5 sm:h-6 sm:w-6" />
@@ -246,7 +246,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="px-4 py-12 sm:px-5 sm:py-20">
+      <section className="relative overflow-hidden px-4 py-12 sm:px-5 sm:py-20">
         <div className="absolute -left-24 top-20 h-72 w-72 rounded-full bg-red-200/40 blur-3xl" />
         <div className="absolute -right-24 h-72 w-72 rounded-full bg-teal-200/40 blur-3xl" />
         <div className="mx-auto max-w-7xl">
@@ -256,13 +256,13 @@ export default function HomePage() {
             center
           />
 
-          <div className="grid grid-cols-2 gap-3 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
             {programs.map((program, index) => (
               <div
                 key={program.title}
                 className={
                   programs.length % 2 !== 0 && index === programs.length - 1
-                    ? "col-span-2 lg:col-span-1"
+                    ? "sm:col-span-2 lg:col-span-1"
                     : ""
                 }
               >
@@ -293,7 +293,7 @@ export default function HomePage() {
                 key={ngo.name}
                 className={`group relative overflow-hidden rounded-2xl border border-red-100 bg-[#fffaf3] p-3 shadow-lg shadow-red-900/5 transition-all duration-300 hover:-translate-y-2 hover:bg-white hover:shadow-2xl hover:shadow-red-900/10 sm:rounded-[2rem] sm:p-6 ${
                   ngos.length % 2 !== 0 && index === ngos.length - 1
-                    ? "col-span-2 lg:col-span-1"
+                    ? "sm:col-span-2 lg:col-span-1"
                     : ""
                 }`}
               >

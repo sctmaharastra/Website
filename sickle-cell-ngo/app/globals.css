@@ -2,11 +2,26 @@
 
 html {
   scroll-behavior: smooth;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 body {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
   background: #fffaf3;
   color: #1f2937;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img,
+video,
+iframe {
+  max-width: 100%;
 }
 
 ::selection {

@@ -26,16 +26,31 @@ export default function Footer() {
 
         <div>
           <h4 className="mb-4 text-lg font-bold">Quick Links</h4>
-          <div className="grid gap-2">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm text-slate-300 hover:text-white"
-              >
-                {link.label}
-              </Link>
-            ))}
+
+          <div className="grid grid-cols-4">
+            <div className="space-y-2">
+              {navLinks.slice(0, Math.ceil(navLinks.length / 2)).map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="block text-sm text-slate-300 transition-colors hover:text-white"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+
+            <div className="space-y-2">
+              {navLinks.slice(Math.ceil(navLinks.length / 2)).map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="block text-sm text-slate-300 transition-colors hover:text-white"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
 

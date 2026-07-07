@@ -4,14 +4,12 @@ import SectionTitle from "@/components/SectionTitle";
 import { ArrowRight, Images } from "lucide-react";
 
 const galleryImages = [
-  "/gallery/Gallery_1.jpeg",
   "/gallery/Gallery (1).jpeg",
   "/gallery/Gallery (2).jpeg",
   "/gallery/Gallery (3).jpeg",
   "/gallery/Gallery (4).jpeg",
   "/gallery/Gallery (5).jpeg",
   "/gallery/Gallery (6).jpeg",
-  "/gallery/Gallery (7).jpeg",
   "/gallery/Gallery (8).jpeg",
   "/gallery/Gallery (9).jpeg",
   "/gallery/Gallery (10).jpeg",

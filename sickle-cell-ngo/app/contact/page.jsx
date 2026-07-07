@@ -1,8 +1,62 @@
+"use client";
+
+import { useState } from "react";
 import PageHeader from "@/components/PageHeader";
 import Button from "@/components/Button";
 import { Mail, MapPin } from "lucide-react";
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState("");
+
+  const handleChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatus("");
+
+    try {
+      const res = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setStatus("Message sent successfully.");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
+      } else {
+        setStatus(data.message || "Something went wrong.");
+      }
+    } catch (error) {
+      setStatus("Failed to send message.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       <PageHeader
@@ -47,37 +101,61 @@ export default function ContactPage() {
             </Button>
           </div>
 
-          <form className="rounded-[2rem] bg-slate-950 p-8 text-white">
+          <form
+            onSubmit={handleSubmit}
+            className="rounded-[2rem] bg-slate-950 p-8 text-white"
+          >
             <h2 className="mb-6 text-3xl font-black">Send a Message</h2>
 
             <div className="grid gap-5">
               <input
                 type="text"
+                name="name"
                 placeholder="Your Name"
+                required
+                value={formData.name}
+                onChange={handleChange}
                 className="rounded-2xl border border-white/10 bg-white/10 px-5 py-4 outline-none placeholder:text-slate-400"
               />
+
               <input
                 type="email"
+                name="email"
                 placeholder="Your Email"
+                value={formData.email}
+                onChange={handleChange}
                 className="rounded-2xl border border-white/10 bg-white/10 px-5 py-4 outline-none placeholder:text-slate-400"
               />
+
               <input
-                type="text"
-                placeholder="Subject"
+                type="tel"
+                name="phone"
+                placeholder="Phone Number"
+                required
+                value={formData.phone}
+                onChange={handleChange}
                 className="rounded-2xl border border-white/10 bg-white/10 px-5 py-4 outline-none placeholder:text-slate-400"
               />
+
               <textarea
                 rows="5"
+                name="message"
                 placeholder="Your Message"
+                required
+                value={formData.message}
+                onChange={handleChange}
                 className="rounded-2xl border border-white/10 bg-white/10 px-5 py-4 outline-none placeholder:text-slate-400"
               />
 
               <button
                 type="submit"
-                className="rounded-full bg-red-700 px-6 py-4 font-bold text-white transition hover:bg-red-800"
+                disabled={loading}
+                className="rounded-full bg-red-700 px-6 py-4 font-bold text-white transition hover:bg-red-800 disabled:cursor-not-allowed disabled:opacity-60"
               >
-                Submit Message
+                {loading ? "Sending..." : "Submit Message"}
               </button>
+
+              {status && <p className="text-sm text-slate-300">{status}</p>}
             </div>
           </form>
         </div>
