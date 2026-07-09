@@ -6,7 +6,7 @@ export default function DiseasesPage() {
     <>
       <PageHeader
         title="Sickle Cell Disease & Thalassemia"
-        description="Underst&ing genetic blood disorders is the first step toward prevention, early diagnosis, & better care."
+        description="Understanding genetic blood disorders is the first step toward prevention, early diagnosis, & better care."
       />
 
       <section className="px-5 py-20">
@@ -50,28 +50,32 @@ export default function DiseasesPage() {
   );
 }
 
-function DiseaseBox({ title, text, facts, dark }) {
-  return (
-    <div
-      className={`rounded-[2rem] p-8 shadow-xl ${
-        dark ? "bg-slate-950 text-white" : "bg-white text-slate-950"
-      }`}
-    >
-      <h2 className="mb-5 text-3xl font-black">{title}</h2>
-      <p
-        className={`mb-7 leading-8 ${dark ? "text-slate-200" : "text-slate-600"}`}
-      >
-        {text}
-      </p>
-
-      <h3 className="mb-4 text-xl font-black">Key Facts</h3>
-      <ul className="space-y-3">
-        {facts.map((fact) => (
-          <li key={fact} className={dark ? "text-slate-200" : "text-slate-600"}>
-            • {fact}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
+export const metadata = {
+  title: "Sickle Cell Disease & Thalassemia Awareness",
+  description:
+    "Learn about Sickle Cell Disease and Thalassemia, symptoms, screening, prevention, counseling, and care support in Chandrapur, Maharashtra.",
+  alternates: {
+    canonical: "/diseases",
+  },
+  openGraph: {
+    title: "Sickle Cell Disease & Thalassemia Awareness",
+    description:
+      "Understand symptoms, screening, prevention, counseling, and care support for Sickle Cell Disease and Thalassemia.",
+    url: "/diseases",
+    images: [
+      {
+        url: "/hero2.png",
+        width: 1050,
+        height: 775,
+        alt: "Sickle Cell Disease and Thalassemia Awareness",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sickle Cell Disease & Thalassemia Awareness",
+    description:
+      "Understand symptoms, screening, prevention, and care support for genetic blood disorders.",
+    images: ["/og-image.jpg"],
+  },
+};

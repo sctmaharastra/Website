@@ -3,7 +3,8 @@
 import { useState } from "react";
 import PageHeader from "@/components/PageHeader";
 import Button from "@/components/Button";
-import { Mail, MapPin } from "lucide-react";
+import { Mail, MapPin, CheckCircle, XCircle } from "lucide-react";
+import MyMap from "@/components/MapContainer";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -13,47 +14,79 @@ export default function ContactPage() {
     message: "",
   });
 
-  const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [dialogType, setDialogType] = useState("");
+  const [dialogMessage, setDialogMessage] = useState("");
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
+
     setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value,
+      [name]: value,
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setStatus("");
+  const closeDialog = () => {
+    setDialogType("");
+    setDialogMessage("");
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
 
     try {
-      const res = await fetch("http://localhost:5000/api/contact", {
+      const payload = new FormData();
+
+      payload.append("access_key", "f6e91da1-0d26-4dcd-87e5-9c0ddeedeb7a");
+      payload.append("name", formData.name);
+      payload.append("email", formData.email);
+      payload.append("phone", formData.phone);
+      payload.append("message", formData.message);
+      payload.append("subject", "New Contact Form Message from Website");
+
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+        body: payload,
       });
 
-      const data = await res.json();
+      const data = await response.json();
 
       if (data.success) {
-        setStatus("Message sent successfully.");
+        setDialogType("success");
+        setDialogMessage(
+          "Thank you for contacting us. We have received your message and will get back to you soon.",
+        );
+
         setFormData({
           name: "",
           email: "",
           phone: "",
           message: "",
         });
+
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 4000);
       } else {
-        setStatus(data.message || "Something went wrong.");
+        setDialogType("error");
+        setDialogMessage(
+          data.message || "Something went wrong. Please try again.",
+        );
+        setIsSubmitting(false);
       }
     } catch (error) {
-      setStatus("Failed to send message.");
-    } finally {
-      setLoading(false);
+      console.error("Form submit error:", error);
+
+      setDialogType("error");
+      setDialogMessage(
+        "Network error. Please check your connection and try again.",
+      );
+      setIsSubmitting(false);
     }
   };
 
@@ -73,17 +106,17 @@ export default function ContactPage() {
 
             <div className="space-y-5">
               <div className="flex gap-4">
-                <Mail className="text-red-700" />
+                <Mail className="shrink-0 text-red-700" />
                 <div>
                   <p className="font-bold text-slate-950">Email</p>
-                  <p className="text-slate-600">
+                  <p className="break-words text-slate-600">
                     sicklecellsocietyofchanda@gmail.com
                   </p>
                 </div>
               </div>
 
               <div className="flex gap-4">
-                <MapPin className="text-red-700" />
+                <MapPin className="shrink-0 text-red-700" />
                 <div>
                   <p className="font-bold text-slate-950">Address</p>
                   <p className="text-slate-600">
@@ -95,15 +128,22 @@ export default function ContactPage() {
 
             <Button
               href="mailto:sicklecellsocietyofchanda@gmail.com"
-              className="mt-8"
+              className="mt-8 w-full justify-center gap-2 rounded-full bg-red-700 px-6 py-4 font-bold text-white transition hover:bg-red-800"
             >
-              Send Email
+              Send Us Email
             </Button>
+
+            <div className="bg-white rounded-lg shadow-md p-6 mt-5">
+              <h3 className="text-lg lg:text-xl font-bold text-gray-900 mb-3">
+                Visit Us
+              </h3>
+              <MyMap />
+            </div>
           </div>
 
           <form
             onSubmit={handleSubmit}
-            className="rounded-[2rem] bg-slate-950 p-8 text-white"
+            className="rounded-[2rem] bg-slate-950 p-8 text-white shadow-xl shadow-slate-950/20"
           >
             <h2 className="mb-6 text-3xl font-black">Send a Message</h2>
 
@@ -115,16 +155,17 @@ export default function ContactPage() {
                 required
                 value={formData.name}
                 onChange={handleChange}
-                className="rounded-2xl border border-white/10 bg-white/10 px-5 py-4 outline-none placeholder:text-slate-400"
+                className="rounded-2xl border border-white/10 bg-white/10 px-5 py-4 text-white outline-none transition placeholder:text-slate-400 focus:border-red-400 focus:bg-white/15"
               />
 
               <input
                 type="email"
                 name="email"
                 placeholder="Your Email"
+                required
                 value={formData.email}
                 onChange={handleChange}
-                className="rounded-2xl border border-white/10 bg-white/10 px-5 py-4 outline-none placeholder:text-slate-400"
+                className="rounded-2xl border border-white/10 bg-white/10 px-5 py-4 text-white outline-none transition placeholder:text-slate-400 focus:border-red-400 focus:bg-white/15"
               />
 
               <input
@@ -134,32 +175,69 @@ export default function ContactPage() {
                 required
                 value={formData.phone}
                 onChange={handleChange}
-                className="rounded-2xl border border-white/10 bg-white/10 px-5 py-4 outline-none placeholder:text-slate-400"
+                className="rounded-2xl border border-white/10 bg-white/10 px-5 py-4 text-white outline-none transition placeholder:text-slate-400 focus:border-red-400 focus:bg-white/15"
               />
 
               <textarea
-                rows="5"
+                rows={5}
                 name="message"
                 placeholder="Your Message"
                 required
                 value={formData.message}
                 onChange={handleChange}
-                className="rounded-2xl border border-white/10 bg-white/10 px-5 py-4 outline-none placeholder:text-slate-400"
+                className="resize-none rounded-2xl border border-white/10 bg-white/10 px-5 py-4 text-white outline-none transition placeholder:text-slate-400 focus:border-red-400 focus:bg-white/15"
               />
 
               <button
                 type="submit"
-                disabled={loading}
+                disabled={isSubmitting}
                 className="rounded-full bg-red-700 px-6 py-4 font-bold text-white transition hover:bg-red-800 disabled:cursor-not-allowed disabled:opacity-60"
               >
-                {loading ? "Sending..." : "Submit Message"}
+                {isSubmitting ? "Sending..." : "Submit Message"}
               </button>
-
-              {status && <p className="text-sm text-slate-300">{status}</p>}
             </div>
           </form>
         </div>
       </section>
+
+      {dialogType && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-5 backdrop-blur-sm">
+          <div className="w-full max-w-md rounded-[2rem] bg-white p-8 text-center shadow-2xl">
+            <div
+              className={`mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-full ${
+                dialogType === "success" ? "bg-green-100" : "bg-red-100"
+              }`}
+            >
+              {dialogType === "success" ? (
+                <CheckCircle className="h-11 w-11 text-green-600" />
+              ) : (
+                <XCircle className="h-11 w-11 text-red-600" />
+              )}
+            </div>
+
+            <h3 className="text-2xl font-black text-slate-950">
+              {dialogType === "success"
+                ? "Message Sent Successfully"
+                : "Submission Failed"}
+            </h3>
+
+            <p className="mt-3 leading-7 text-slate-600">{dialogMessage}</p>
+
+            <button
+              onClick={() => {
+                if (dialogType === "success") {
+                  window.location.href = "/";
+                } else {
+                  closeDialog();
+                }
+              }}
+              className="mt-8 w-full rounded-full bg-red-700 py-4 font-bold text-white transition hover:bg-red-800"
+            >
+              {dialogType === "success" ? "Continue" : "Try Again"}
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 }
